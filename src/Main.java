@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
     public  static void main(String[] args) {
@@ -6,7 +7,7 @@ public class Main {
         ConsultaMoneda consulta = new ConsultaMoneda();
 
         int option;
-        System.out.print("""
+        System.out.println("""
                 "conversion_rates Keys 🤑":
                                  "USD":Usa,
                                  "AED": United Arab Emirates,
@@ -183,7 +184,13 @@ public class Main {
                 scanner.nextLine();
                 switch (option) {
                     case 1:
-                        ConvertirMoneda.convertirMoneda(consulta, scanner);
+                        System.out.print("Ingrese la moneda de origen (por ejemplo, USD): ");
+                        String desde = scanner.nextLine();
+
+                        System.out.print("Ingrese la moneda de destino (por ejemplo, COP): ");
+                        String hasta = scanner.nextLine();
+
+                        ConvertirMonedad.convertirMoneda(desde, hasta, consulta, scanner);
                         break;
                     case 9:
                         System.out.print("Gracias por preferirnos");
@@ -191,7 +198,7 @@ public class Main {
                     default:
                         System.out.print("Opción invalida, intentalo de nuevo");
                 }
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 System.out.print("Error, INgresa una opción valida del menú");
                 scanner.nextLine();
                 option = -1;

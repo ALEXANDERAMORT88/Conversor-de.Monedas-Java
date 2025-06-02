@@ -1,15 +1,15 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class convertirMoneda {
+public class ConvertirMonedad {
 
-    public  static void (String desde, String hasta, ConsultarMoneda Consulta, Scanner scanner) {
+    public  static void convertirMoneda(String desde, String hasta, ConsultaMoneda consulta, Scanner scanner) {
         double cantidad = 0;
         double cantidadConvertida;
         Moneda moneda = null;
 
         try {
-            moneda = consulta.buscarMoneda(desde,hasta);
+            moneda = consulta.busquedaDeMoneda(desde,hasta);
             if ( moneda == null) {
                 System.out.print("Error, no se pudo encotrar información para la conversion de " + desde + " a " + hasta);
                 return;
@@ -30,16 +30,20 @@ public class convertirMoneda {
             scanner.nextLine();
 
             cantidadConvertida = cantidad * moneda.conversion_tasa();
-            System.out.print("La tasa de conversio de ho para " + desde + hasta + " = " + moneda.conversion_tasa());
-            System.out.print(cantidad + " " + desde + " = " + cantidadConvertida + hasta);
+            System.out.println("La tasa de conversio de "  + desde + " a " + hasta + " = " + moneda.conversion_tasa());
+            System.out.println(cantidad + " " + desde + " = " + cantidadConvertida + hasta);
         } catch (RuntimeException e) {
-            System.out.print("Error, ocurrió un problema al obtener la información de la moneda, por favor, intentalo de nuevo mas tarde");
-            System.out.print("Detalles del error: Ingresa una moneda valida");
+            System.out.println("Error, ocurrió un problema al obtener la información de la moneda, por favor, intentalo de nuevo mas tarde");
+            System.out.println("Detalles del error: Ingresa una moneda valida");
 
         }
     }
 
-    public static void convertirMoneda(convertirMoneda consulta, Scanner scanner) {
+    public static void ConvertirMoneda( ConvertirMonedad consulta, Scanner scanner) {
 
     }
 }
+
+
+
+

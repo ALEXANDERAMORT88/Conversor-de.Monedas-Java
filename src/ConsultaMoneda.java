@@ -1,13 +1,12 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class consultaMoneda {
+public class ConsultaMoneda {
 
     public Moneda busquedaDeMoneda(String desde, String hasta) {
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/c5b0efe2cd5f5e3e5f653f9f/" + desde + "/" + hasta);
@@ -25,7 +24,7 @@ public class consultaMoneda {
 
             if (jsonObject.has("result") && jsonObject.get("result").getAsString().equals("error") ) {
                 if (jsonObject.has("error-type")) {
-                    String errorType = jsonObject.get("error_type").getAsString();
+                    String errorType = jsonObject.get("error-type").getAsString();
                     switch (errorType) {
                         case "unsupported-code" ->
                                 throw new RuntimeException("Error, códgo de modena no son soportados");
